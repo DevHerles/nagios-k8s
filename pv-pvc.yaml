@@ -1,0 +1,130 @@
+# pv-pvc.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nagios-etc
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: pcmvsanfs10.pngd.gob.pe
+    server: /SGD-ISLAY-Payara
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nagios-var
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: pcmvsanfs10.pngd.gob.pe
+    server: /SGD-ISLAY-Payara
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-custom-plugins
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: pcmvsanfs10.pngd.gob.pe
+    server: /SGD-ISLAY-Payara
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nagiosgraph-var
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: pcmvsanfs10.pngd.gob.pe
+    server: /SGD-ISLAY-Payara
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nagiosgraph-etc
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: pcmvsanfs10.pngd.gob.pe
+    server: /SGD-ISLAY-Payara
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nagios-etc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nagios-var
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-custom-plugins
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nagiosgraph-var
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nagiosgraph-etc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+

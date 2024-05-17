@@ -1,0 +1,48 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagios4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nagios4
+  template:
+    metadata:
+      labels:
+        app: nagios4
+    spec:
+      containers:
+      - name: nagios4
+        image: jasonrivers/nagios:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /opt/nagios/etc
+          name: nagios-etc
+        - mountPath: /opt/nagios/var
+          name: nagios-var
+        - mountPath: /opt/Custom-Nagios-Plugins
+          name: custom-plugins
+        - mountPath: /opt/nagiosgraph/var
+          name: nagiosgraph-var
+        - mountPath: /opt/nagiosgraph/etc
+          name: nagiosgraph-etc
+      volumes:
+      - name: nagios-etc
+        persistentVolumeClaim:
+          claimName: pvc-nagios-etc
+      - name: nagios-var
+        persistentVolumeClaim:
+          claimName: pvc-nagios-var
+      - name: custom-plugins
+        persistentVolumeClaim:
+          claimName: pvc-custom-plugins
+      - name: nagiosgraph-var
+        persistentVolumeClaim:
+          claimName: pvc-nagiosgraph-var
+      - name: nagiosgraph-etc
+        persistentVolumeClaim:
+          claimName: pvc-nagiosgraph-etc
+
