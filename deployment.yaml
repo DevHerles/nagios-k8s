@@ -15,34 +15,14 @@ spec:
     spec:
       containers:
       - name: nagios4
-        image: jasonrivers/nagios:latest
+        image: tanzu-harbor.pngd.gob.pe/pcm/nagios:latest
         ports:
         - containerPort: 80
         volumeMounts:
-        - mountPath: /opt/nagios/etc
-          name: nagios-etc
-        - mountPath: /opt/nagios/var
-          name: nagios-var
-        - mountPath: /opt/Custom-Nagios-Plugins
-          name: custom-plugins
-        - mountPath: /opt/nagiosgraph/var
-          name: nagiosgraph-var
-        - mountPath: /opt/nagiosgraph/etc
-          name: nagiosgraph-etc
+        - mountPath: /user/local/nagios/etc
+          name: nagios
       volumes:
-      - name: nagios-etc
+      - name: nagios
         persistentVolumeClaim:
-          claimName: pvc-nagios-etc
-      - name: nagios-var
-        persistentVolumeClaim:
-          claimName: pvc-nagios-var
-      - name: custom-plugins
-        persistentVolumeClaim:
-          claimName: pvc-custom-plugins
-      - name: nagiosgraph-var
-        persistentVolumeClaim:
-          claimName: pvc-nagiosgraph-var
-      - name: nagiosgraph-etc
-        persistentVolumeClaim:
-          claimName: pvc-nagiosgraph-etc
+          claimName: pvc-nagios
 

@@ -11,5 +11,5 @@ spec:
     port: 80
     targetPort: 80
     nodePort: 30800 # Choose a port number that is not in use and within the valid range
-  type: NodePort
+  type: LoadBalancer
 
