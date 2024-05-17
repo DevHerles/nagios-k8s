@@ -28,6 +28,10 @@ RUN apt install -y \
 	qstat \
 	dnsutils \
 	smbclient
+
+RUN ln -sf /usr/bin/aclocal /usr/bin/aclocal-1.13
+RUN ln -sf /usr/bin/automake /usr/bin/automake-1.13
+
 # Building Nagios Core
 COPY nagios-4.4.9 /nagios-4.4.9
 WORKDIR /nagios-4.4.9
